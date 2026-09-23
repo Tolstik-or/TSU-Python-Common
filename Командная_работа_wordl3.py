@@ -11,7 +11,7 @@ def charac_checker(word):
 
 while newgame == "Y":
     # Начинаем игру и подготавливаем нужные технические значения
-    print("WORDLE FIPL")
+    print("HELLO, WORLDLE")
     word = "скоро"
     guess = None
     turns = 5
