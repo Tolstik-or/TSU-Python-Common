@@ -9,6 +9,29 @@ def charac_checker(word):
             return True
         # return word != all(char in russian for char in word)
 
+def hmm(writ,wha): 
+    #функция возвращает какие буквы 
+    #из введённого слова (writ) 
+    #есть в загаданном слове (wha)
+
+    #красные буквы - нету в слове
+    #белые буквы - есть в слове, но не на своём месте
+    #зелёные буквы - на своём месте
+
+    res = "[ "
+    for i in range(0,len(writ)-1): #смотрим, какие буквы находятся на своём месте
+        if writ[i] == wha[i]: res = res + "\033[92m" + writ[i] + "\033[0m | "#print(writ[i],"находится на своём месте")
+        elif writ[i] in wha: res = res + writ[i] + " | " #print(writ[i],"есть в загаданном слове")
+        else: res = res + "\033[91m" + writ[i] + "\033[0m | " #print(writ[i],"нету в загаданном слове")
+
+    if writ[len(writ)-1] == wha[len(writ)-1]: res = res + "\033[92m" + writ[len(writ)-1] + "\033[0m ]"
+    elif writ[len(writ)-1] in wha: res = res + writ[len(writ)-1] + " ]"
+    else: res = res + "\033[91m" + writ[len(writ)-1] + "\033[0m ]"
+
+    print(res)
+
+#hmm("abc","acd")
+
 while newgame == "Y":
     # Начинаем игру и подготавливаем нужные технические значения
     print("HELLO, WORLDLE")
@@ -39,13 +62,7 @@ while newgame == "Y":
                 print(word)
                 break
             
-            hint = list() # Механика подсказки, какие буквы игрок угадал
-            for i in range(len(word)):
-                if guess[i] == word[i]:
-                    hint.append(guess[i])
-                else:
-                    hint.append("?")
-            print(hint)
+            hmm(guess,word)# Показываем угаданные буквы и подсвечиваем их нужным цветом.
             
             print("У вас осталось", turns, "шага")
             
