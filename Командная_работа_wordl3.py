@@ -1,3 +1,11 @@
+import random
+
+file1 = open('Wordlist.txt', 'r')
+dictionary = file1.readline().split()
+file1.close()
+#print(len(dictionary))
+#print(dictionary[random.randint(1,len(dictionary))])
+
 newgame = "Y" # Подготовка для новой игры
 
 def charac_checker(word):
@@ -35,7 +43,7 @@ def hmm(writ,wha):
 while newgame == "Y":
     # Начинаем игру и подготавливаем нужные технические значения
     print("HELLO, WORLDLE")
-    word = "скоро"
+    word = dictionary[random.randint(1,len(dictionary))]
     guess = None
     turns = 5
     while guess != word:
